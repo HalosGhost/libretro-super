@@ -62,8 +62,8 @@ build_libretro_fba_full() {
       cd libretro-fba/
       cd svn-current/trunk
 
-      "${MAKE}" -f makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Final Burn Alpha'
-      "${MAKE}" -f makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Final Burn Alpha'
+      "${MAKE}" -f makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Final Burn Alpha'
+      "${MAKE}" -f makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Final Burn Alpha'
       cp "fb_alpha_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Final Burn Alpha not fetched, skipping ...'
@@ -76,8 +76,8 @@ build_libretro_pcsx_rearmed() {
       echo '=== Building PCSX ReARMed ==='
       cd libretro-pcsx-rearmed
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean PCSX ReARMed'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build PCSX ReARMed'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean PCSX ReARMed'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build PCSX ReARMed'
       cp "pcsx_rearmed_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'PCSX ReARMed not fetched, skipping ...'
@@ -90,12 +90,12 @@ build_libretro_mednafen() {
       echo '=== Building Mednafen ==='
       cd libretro-mednafen
 
-      "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
-      "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
+      "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
+      "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die "Failed to build mednafen/${core}"
       cp "mednafen_pce_fast_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
       for core in wswan ngp vb psx gba snes; do
-         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
-         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die "Failed to build mednafen/${core}"
          cp "mednafen_${core//-/_}_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
       done
    else
@@ -109,8 +109,8 @@ build_libretro_stella() {
       echo '=== Building Stella ==='
       cd libretro-stella
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Stella'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Stella'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Stella'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Stella'
       cp "stella_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Stella not fetched, skipping ...'
@@ -123,8 +123,8 @@ build_libretro_handy() {
       echo '=== Building Handy ==='
       cd libretro-handy
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Handy'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Handy'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Handy'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Handy'
       cp "handy_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Handy not fetched, skipping ...'
@@ -137,8 +137,8 @@ build_libretro_quicknes() {
       echo '=== Building QuickNES ==='
       cd libretro-quicknes/libretro
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean QuickNES'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build QuickNES'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean QuickNES'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build QuickNES'
       cp "quicknes_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'QuickNES not fetched, skipping ...'
@@ -165,8 +165,8 @@ build_libretro_s9x() {
       echo '=== Building SNES9x ==='
       cd libretro-s9x/libretro
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean SNES9x'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build SNES9x'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean SNES9x'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build SNES9x'
       cp "snes9x_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'SNES9x not fetched, skipping ...'
@@ -179,8 +179,8 @@ build_libretro_s9x_next() {
       echo '=== Building SNES9x-Next ==='
       cd libretro-s9x-next/
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to build SNES9x-Next'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build SNES9x-Next'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to build SNES9x-Next'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build SNES9x-Next'
       cp "snes9x_next_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'SNES9x-Next not fetched, skipping ...'
@@ -193,8 +193,8 @@ build_libretro_genplus() {
       echo '=== Building Genplus GX ==='
       cd libretro-genplus/
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Genplus GX'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Genplus GX'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Genplus GX'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Genplus GX'
       cp "genesis_plus_gx_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Genplus GX not fetched, skipping ...'
@@ -207,8 +207,8 @@ build_libretro_mame078() {
       echo '=== Building MAME 0.78 ==='
       cd libretro-mame078
 
-      "${MAKE}" -f makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean MAME 0.78'
-      "${MAKE}" -f makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build MAME 0.78'
+      "${MAKE}" -f makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean MAME 0.78'
+      "${MAKE}" -f makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build MAME 0.78'
       cp "mame078_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'MAME 0.78 not fetched, skipping ...'
@@ -221,8 +221,8 @@ build_libretro_mame() {
       echo '=== Building MAME ==='
       cd libretro-mame/0150
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean MAME'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build MAME'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean MAME'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build MAME'
       cp "mame_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'MAME not fetched, skipping ...'
@@ -235,8 +235,8 @@ build_libretro_vbam() {
       echo '=== Building VBA-M ==='
       cd libretro-vbam/src/libretro
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean VBA-M'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build VBA-M'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean VBA-M'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build VBA-M'
       cp "vbam_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'VBA-M not fetched, skipping ...'
@@ -249,8 +249,8 @@ build_libretro_vba_next() {
       echo '=== Building VBA-Next ==='
       cd libretro-vba-next/
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean VBA-Next'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build VBA-Next'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean VBA-Next'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build VBA-Next'
       cp "vba_next_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'VBA-Next not fetched, skipping ...'
@@ -263,8 +263,8 @@ build_libretro_fceu() {
       echo '=== Building FCEUmm ==='
       cd libretro-fceu
 
-      "${MAKE}" -C fceumm-code -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean FCEUmm'
-      "${MAKE}" -C fceumm-code -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build FCEUmm'
+      "${MAKE}" -C fceumm-code -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean FCEUmm'
+      "${MAKE}" -C fceumm-code -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build FCEUmm'
       cp "fceumm-code/fceumm_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'FCEUmm not fetched, skipping ...'
@@ -277,8 +277,8 @@ build_libretro_gambatte() {
       echo '=== Building Gambatte ==='
       cd libretro-gambatte/libgambatte
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Gambatte'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Gambatte'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Gambatte'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Gambatte'
       cp "gambatte_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Gambatte not fetched, skipping ...'
@@ -291,8 +291,8 @@ build_libretro_nx() {
       echo '=== Building NXEngine ==='
       cd libretro-nx
 
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean NXEngine'
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build NXEngine'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean NXEngine'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build NXEngine'
       cp "nxengine_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'NXEngine not fetched, skipping ...'
@@ -305,8 +305,8 @@ build_libretro_prboom() {
       echo '=== Building PRBoom ==='
       cd libretro-prboom
 
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean PRBoom'
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build PRBoom'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean PRBoom'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build PRBoom'
       cp "prboom_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'PRBoom not fetched, skipping ...'
@@ -319,8 +319,8 @@ build_libretro_dinothawr() {
       echo '=== Building Dinothawr ==='
       cd libretro-dinothawr
 
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Dinothawr'
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Dinothawr'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Dinothawr'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET_ALT}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Dinothawr'
       cp "dinothawr_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Dinothawr not fetched, skipping ...'
@@ -333,8 +333,8 @@ build_libretro_meteor() {
       echo '=== Building Meteor ==='
       cd libretro-meteor/libretro
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Meteor'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Meteor'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Meteor'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Meteor'
       cp "meteor_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Meteor not fetched, skipping ...'
@@ -347,8 +347,8 @@ build_libretro_nestopia() {
       echo '=== Building Nestopia ==='
       cd libretro-nestopia/libretro
 
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Nestopia'
-      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Nestopia'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Nestopia'
+      "${MAKE}" platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Nestopia'
       cp "nestopia_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Nestopia not fetched, skipping ...'
@@ -361,8 +361,8 @@ build_libretro_tyrquake() {
       echo '=== Building Tyr Quake ==='
       cd libretro-tyrquake
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Tyr Quake'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Tyr Quake'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Tyr Quake'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Tyr Quake'
       cp "tyrquake_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Tyr Quake not fetched, skipping ...'
@@ -375,8 +375,8 @@ build_libretro_modelviewer() {
       echo '=== Building Modelviewer (GL) ==='
       cd libretro-gl-modelviewer
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Modelviewer'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Modelviewer'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Modelviewer'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Modelviewer'
       cp "modelviewer_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'ModelViewer not fetched, skipping ...'
@@ -389,8 +389,8 @@ build_libretro_scenewalker() {
       echo '=== Building SceneWalker (GL) ==='
       cd libretro-gl-scenewalker
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean SceneWalker'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build SceneWalker'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean SceneWalker'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build SceneWalker'
       cp "scenewalker_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'SceneWalker not fetched, skipping ...'
@@ -403,8 +403,8 @@ build_libretro_instancingviewer() {
       echo '=== Building Instancing Viewer (GL) ==='
       cd libretro-gl-instancingviewer
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean InstancingViewer'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build InstancingViewer'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean InstancingViewer'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build InstancingViewer'
       cp "instancingviewer_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'InstancingViewer not fetched, skipping ...'
@@ -417,8 +417,8 @@ build_libretro_scummvm() {
       echo '=== Building ScummVM ==='
       cd libretro-scummvm/backends/platform/libretro/build
 
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean ScummVM'
-      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build ScummVM'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean ScummVM'
+      "${MAKE}" -f Makefile platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build ScummVM'
       cp "scummvm_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'ScummVM not fetched, skipping ...'
@@ -431,8 +431,8 @@ build_libretro_dosbox() {
       echo '=== Building DOSbox ==='
       cd libretro-dosbox
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean DOSbox'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build DOSbox'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean DOSbox'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build DOSbox'
       cp "dosbox_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'DOSbox not fetched, skipping ...'
@@ -483,7 +483,7 @@ build_libretro_bnes() {
 
       mkdir -p obj
       "${MAKE}" "-j${JOBS}" clean || die 'Failed to clean bNES'
-      "${MAKE}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build bNES'
+      "${MAKE}" ${COMPILER} "-j${JOBS}" || die 'Failed to build bNES'
       cp "libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}/bnes_libretro.${FORMAT_EXT}"
    else
       echo 'bNES not fetched, skipping ...'
@@ -499,19 +499,19 @@ build_libretro_mupen64() {
       if [ "${X86}" ] && [ "${X86_64}" ]; then
          echo '=== Building Mupen 64 Plus (x86_64 dynarec) ==='
          "${MAKE}" WITH_DYNAREC='x86_64' "-j${JOBS}" clean || die 'Failed to clean Mupen 64 (x86_64 dynarec)'
-         "${MAKE}" WITH_DYNAREC='x86_64' "${COMPILER}" "-j${JOBS}" || die 'Failed to build Mupen 64 (x86_64 dynarec)'
+         "${MAKE}" WITH_DYNAREC='x86_64' ${COMPILER} "-j${JOBS}" || die 'Failed to build Mupen 64 (x86_64 dynarec)'
       elif [ "${X86}" ]; then
          echo '=== Building Mupen 64 Plus (x86 32bit dynarec) ==='
          "${MAKE}" WITH_DYNAREC='x86' "-j${JOBS}" clean || die 'Failed to clean Mupen 64 (x86 dynarec)'
-         "${MAKE}" WITH_DYNAREC='x86' "${COMPILER}" "-j${JOBS}" || die 'Failed to build Mupen 64 (x86 dynarec)'
+         "${MAKE}" WITH_DYNAREC='x86' ${COMPILER} "-j${JOBS}" || die 'Failed to build Mupen 64 (x86 dynarec)'
       elif [ "${CORTEX_A8}" ] || [ "${CORTEX_A9}" ]; then
          echo '=== Building Mupen 64 Plus (ARM dynarec) ==='
          "${MAKE}" WITH_DYNAREC='arm' "-j${JOBS}" clean || die 'Failed to clean Mupen 64 (ARM dynarec)'
-         "${MAKE}" WITH_DYNAREC='arm' "${COMPILER}" "-j${JOBS}" || die 'Failed to build Mupen 64 (ARM dynarec)'
+         "${MAKE}" WITH_DYNAREC='arm' ${COMPILER} "-j${JOBS}" || die 'Failed to build Mupen 64 (ARM dynarec)'
       else
          echo '=== Building Mupen 64 Plus ==='
          "${MAKE}" "-j${JOBS}" clean || die 'Failed to clean Mupen 64'
-         "${MAKE}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build Mupen 64'
+         "${MAKE}" ${COMPILER} "-j${JOBS}" || die 'Failed to build Mupen 64'
       fi
       cp "mupen64plus_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
@@ -525,8 +525,8 @@ build_libretro_picodrive() {
       echo '=== Building Picodrive ==='
       cd libretro-picodrive
 
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die 'Failed to clean Picodrive'
-      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die 'Failed to build PCSX Picodrive'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" clean || die 'Failed to clean Picodrive'
+      "${MAKE}" -f Makefile.libretro platform="${FORMAT_COMPILER_TARGET}" ${COMPILER} "-j${JOBS}" || die 'Failed to build PCSX Picodrive'
       cp "picodrive_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
    else
       echo 'Picodrive not fetched, skipping ...'
