@@ -93,7 +93,56 @@ build_libretro_mednafen() {
       "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
       "${MAKE}" core='pce-fast' platform="${FORMAT_COMPILER_TARGET_ALT}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
       cp "mednafen_pce_fast_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
-      for core in wswan ngp vb psx gba snes; do
+      for core in wswan ngp vb; do
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
+         cp "mednafen_${core//-/_}_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
+      done
+   else
+      echo 'Mednafen not fetched, skipping ...'
+   fi
+}
+
+build_libretro_mednafen_psx() {
+   cd "${BASE_DIR}"
+
+   if [ -d 'libretro-mednafen' ]; then
+      echo '=== Building Mednafen PSX ==='
+      cd libretro-mednafen
+
+      for core in psx; do
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
+         cp "mednafen_${core//-/_}_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
+      done
+   else
+      echo 'Mednafen not fetched, skipping ...'
+   fi
+}
+
+build_libretro_mednafen_gba() {
+   cd "${BASE_DIR}"
+   if [ -d 'libretro-mednafen' ]; then
+      echo '=== Building Mednafen VBA ==='
+      cd libretro-mednafen
+
+      for core in gba; do
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
+         "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
+         cp "mednafen_${core//-/_}_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
+      done
+   else
+      echo 'Mednafen not fetched, skipping ...'
+   fi
+}
+
+build_libretro_mednafen_snes() {
+   cd "${BASE_DIR}"
+   if [ -d 'libretro-mednafen' ]; then
+      echo '=== Building Mednafen bSNES ==='
+      cd libretro-mednafen
+
+      for core in snes; do
          "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" clean || die "Failed to clean mednafen/${core}"
          "${MAKE}" core="${core}" platform="${FORMAT_COMPILER_TARGET}" "${COMPILER}" "-j${JOBS}" || die "Failed to build mednafen/${core}"
          cp "mednafen_${core//-/_}_libretro${FORMAT}.${FORMAT_EXT}" "${RARCH_DIST_DIR}"
